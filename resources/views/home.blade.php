@@ -11,6 +11,15 @@
 
 <body>
 
+    <h2>Riders Data</h2>
+    <ul>
+        @foreach ($riders as $rider)
+            <li>{{ $rider->name }}</li>
+        @endforeach
+    </ul>
+    <hr>
+    <hr>
+
     <button id='colorChanger'>Change Background Color</button>
     <ul>
         <li>One</li>

@@ -28,6 +28,8 @@ use Illuminate\Support\Facades\Route;
 Route::get("/", [WebsiteController::class, 'indexPage']);
 Route::get("/home", [WebsiteController::class, 'homePage']);
 Route::post('/login', [FormController::class, 'userLogin']);
+Route::get('/createRider', [FormController::class, 'createRider']);
+
 
 
 // Route::get('/', function () {

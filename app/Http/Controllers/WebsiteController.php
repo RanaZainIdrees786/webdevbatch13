@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use  App\Models\Rider;
+
 
 class WebsiteController extends Controller
 {
@@ -10,6 +12,8 @@ class WebsiteController extends Controller
          return view('main');
     }
     public function homePage(){
-        return view('home');
+        // ----> sql ---> select * from riders;
+        $riders = Rider::all();
+        return view('home', ['riders' => $riders]);
     }
 }
