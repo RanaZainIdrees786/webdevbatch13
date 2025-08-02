@@ -6,9 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" href="{{asset("mycss/style.css")}}">
 </head>
 
 <body>
+
+    <button id='colorChanger'>Change Background Color</button>
     <ul>
         <li>One</li>
         <li>two</li>
@@ -42,9 +45,9 @@
     </ul>
 
     {{-- Conditional Rendering --}}
-    @if ($name== 'zain')
-        <span>Admin {{$name}} Logged In</span>
-        @else
+    @if ($name == 'zain')
+        <span>Admin {{ $name }} Logged In</span>
+    @else
         <span>User Logged In</span>
     @endif
 
@@ -52,6 +55,8 @@
 
     <h1><?php echo $name; ?></h1>
     <h1>{{ $name }}</h1>
+
+    <script src="{{asset('myjs/main.js')}}"></script>
 </body>
 
 </html>

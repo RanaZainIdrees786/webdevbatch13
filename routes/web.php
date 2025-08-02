@@ -22,18 +22,12 @@ use Illuminate\Support\Facades\Route;
 // http://127.0.0.1:8000/register
 // http://127.0.0.1:8000/login
 
-
 // HTTP----> Hypertext transfer protocol
 // [ GET, PUT, POST, DELETE ]
 
-
-
 Route::get("/", [WebsiteController::class, 'indexPage']);
 Route::get("/home", [WebsiteController::class, 'homePage']);
-
 Route::post('/login', [FormController::class, 'userLogin']);
-
-
 
 
 // Route::get('/', function () {
