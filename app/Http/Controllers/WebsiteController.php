@@ -25,7 +25,6 @@ class WebsiteController extends Controller
     {
         $product = Product::findOrFail(1);
         // dd($product->brand->name);
-
         // dd($product);
         $brands = Brand::all();
         $products = Product::all();
