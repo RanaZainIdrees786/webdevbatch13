@@ -15,13 +15,5 @@ class FormController extends Controller
             echo 'Invalid Credentials';
         }
     }
-    public function createRider(Request $request){
-        $newRider = new Rider();
-        $newRider->name = "mubeen";
-        $newRider->email = "mubeen@gmail.com";
-        $newRider->password = "mubeen123";
-        $newRider->phone = "1234567890";
-        $newRider->save();
-        echo "rider created successfully";
-    }
+
 }
