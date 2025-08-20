@@ -122,10 +122,10 @@ class ProductController extends Controller
     function delete($id)
     {
         $product = Product::findOrFail($id);
-        // if ($product->image != "") {
-        //     // delete associated image file
-        //     File::delete(public_path('/uploads/products/' . $product->image));
-        // }
+        if ($product->image != "") {
+            // delete associated image file
+            File::delete(public_path('/uploads/products/' . $product->image));
+        }
         $product->delete();
 
         return redirect()->route('admin-index');
@@ -151,19 +151,19 @@ class ProductController extends Controller
         $product->brand_id = $request->brand_id;
         $product->save();
 
-        // if ($request->image != "") {
-        //     // delete old image
-        //     File::delete(public_path('uploads/products/' . $product->image));
-        //     // Create new image file name
-        //     $image = $request->image;
-        //     $ext = $image->getClientOriginalExtension();
-        //     $imageName = time() . '.' . $ext; // unique Image Name
+        if ($request->image != "") {
+            // delete old image
+            File::delete(public_path('uploads/products/' . $product->image));
+            // Create new image file name
+            $image = $request->image;
+            $ext = $image->getClientOriginalExtension();
+            $imageName = time() . '.' . $ext; // unique Image Name
 
-        //     //save image to the public directory
-        //     $image->move(public_path('uploads/products/'), $imageName);
-        //     $product->image = $imageName;
-        //     $product->save();
-        // }
+            //save image to the public directory
+            $image->move(public_path('uploads/products/'), $imageName);
+            $product->image = $imageName;
+            $product->save();
+        }
 
         return redirect()->route('admin-index');
     }
