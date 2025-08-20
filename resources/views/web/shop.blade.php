@@ -178,12 +178,12 @@
                                         <div class="single-product-wrapper">
                                             <!-- Product Image -->
                                             <div class="product-img">
-                                                <img src="{{ asset('essencemaster/img/product-img/product-1.jpg') }}"
+                                                <img src="{{ asset('uploads/products/'. $product->image) }}"
                                                     alt="">
                                                 <!-- Hover Thumb -->
-                                                <img class="hover-img"
+                                                {{-- <img class="hover-img"
                                                     src="{{ asset('essencemaster/img/product-img/product-2.jpg') }}"
-                                                    alt="">
+                                                    alt=""> --}}
 
                                                 <!-- Product Badge -->
                                                 <div class="product-badge offer-badge">

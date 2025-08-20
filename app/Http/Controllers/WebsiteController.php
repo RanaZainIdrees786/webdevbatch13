@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Rider;
 use App\Models\Brand;
 use App\Models\Product;
+use App\Models\Order;
 
 class WebsiteController extends Controller
 {
@@ -23,9 +24,7 @@ class WebsiteController extends Controller
     }
     public function shopPage()
     {
-        $product = Product::findOrFail(1);
-        // dd($product->brand->name);
-        // dd($product);
+        // $product = Product::findOrFail(1);
         $brands = Brand::all();
         $products = Product::all();
         return view('web.shop', [
@@ -48,7 +47,53 @@ class WebsiteController extends Controller
     public function placeorder(Request $request)
     {
         // Not Implemented yet
+        $order = new Order();
+        $order->firstname = $request->firstname;
+        $order->lastname = $request->lastname;
+        $order->address = $request->address;
+        $order->contact = $request->contact;
+        $order->email = $request->email;
+        $order->total = $request->total; // input type hidden
+
+        $order->save();
+        // Empty the Cart
+        session()->forget(keys: 'cart');
+
+        // Flash Message
+        session()->flash('success', '🎉 Your order has been placed successfully!');
+
+        return redirect()->back();
 
     }
 
+    public function adminIndexPage()
+    {
+        // fetching data from database
+        $products = Product::all();
+
+        return view('admin.adminindex', [
+            'products' => $products
+        ]);
+    }
+
+    public function adminMasterPage()
+    {
+        return view('admin.adminmaster');
+    }
+
+    public function orders()
+    {
+
+        $orders = Order::all();
+        return view('admin.orders', [
+            'orders' => $orders
+        ]);
+    }
+
+    public function deleteOrder($id)
+    {
+        $order = Order::findOrFail($id);
+        $order->delete();
+        return redirect()->back();
+    }
 }
